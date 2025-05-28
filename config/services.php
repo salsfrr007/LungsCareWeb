@@ -14,6 +14,10 @@ return [
     |
     */
 
+  
+    'firebase' => [
+    'credentials' => storage_path('app/firebase_credentials.json'),
+],
     'mailgun' => [
         'domain' => env('MAILGUN_DOMAIN'),
         'secret' => env('MAILGUN_SECRET'),
