@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/login', function () {
@@ -49,3 +50,6 @@ Route::get('/dashboard', function () {
     }
     return view('dashboard');
 })->name('dashboard');
+
+Route::get('/user', [UserController::class, 'index'])->name('active.users');
+Route::delete('/user/{id}', [UserController::class, 'destroy'])->name('active.users.delete');
