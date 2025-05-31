@@ -21,7 +21,31 @@ Route::get('/profile', function () {
     }
     return view('admin.profile');
 });
-Route::get('/logout', function () {
-    session()->flush();
-    return redirect('/login');
+
+Route::get('/articles', function () {
+    return view('articles.index');
 });
+Route::get('/articles/create', function () {
+    return view('articles.create');
+});
+Route::post('/articles/store', function () {
+    // Simulasi penyimpanan artikel
+    return redirect('/articles')->with('success', 'Artikel berhasil disimpan!');
+});
+
+Route::get('/logout', function () {
+    return view('logout');
+});
+Route::post('/logout', function () {
+    // Hapus session login
+    session()->forget('is_admin');
+    // Redirect ke halaman login
+    return redirect('/login');
+})->name('logout');
+
+Route::get('/dashboard', function () {
+    if (!session('is_admin')) {
+        return redirect('/login');
+    }
+    return view('dashboard');
+})->name('dashboard');

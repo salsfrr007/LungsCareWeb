@@ -25,9 +25,8 @@ class AuthController extends Controller
             // Simpan session login (opsional)
             session(['is_admin' => true]);
             // Redirect ke dashboard/home setelah login sukses
-            return redirect('/dashboard')->with('loginSuccess', true);
+            return redirect('/dashboard')->with('loginSuccess', 'Login berhasil! Selamat datang');
         } else {
-            // Jika salah, kembali ke login dengan pesan error
             return back()->with('loginError', 'Username atau password salah!');
         }
     }
@@ -37,7 +36,7 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            return redirect('/home');
+            return redirect('/dashboard')->with('loginSuccess', 'Login berhasil! Selamat datang');
         } else {
             return back()->withErrors(['msg' => 'Email atau password salah!']);
         }
@@ -47,7 +46,6 @@ class AuthController extends Controller
     {
         return view('registration');
     }
-
 
     public function home()
     {
