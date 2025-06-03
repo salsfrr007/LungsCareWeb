@@ -33,9 +33,9 @@
       </nav>
     </div>
     <div class="flex flex-col gap-4 mt-10">
-      <a href="#" class="flex items-center gap-2 text-sm hover:text-blue-600">
-        <span class="material-icons">settings</span> Settings
-      </a>
+    <a href="/settings" class="flex items-center gap-2 text-sm hover:text-blue-600">
+                    <span class="material-icons">settings</span> Settings
+                </a>
       <a href="/login" class="flex items-center gap-2 text-sm hover:text-red-500">
         <span class="material-icons">logout</span> Log out
       </a>

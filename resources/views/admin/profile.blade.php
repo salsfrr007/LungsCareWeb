@@ -18,9 +18,9 @@
         <a href="/dashboard" class="flex items-center gap-2 hover:text-blue-600 font-medium">
           <span class="material-icons">dashboard</span> Dashboard
         </a>
-        <a href="/article" class="flex items-center gap-2 hover:text-blue-600">
-          <span class="material-icons">article</span> Articles
-        </a>
+        <a href="/articles" class="flex items-center gap-2 hover:text-blue-600">
+                        <span class="material-icons">article</span> Articles
+                    </a>
         <a href="/user" class="flex items-center gap-2 hover:text-blue-600">
           <span class="material-icons">group</span> Active Users
         </a>

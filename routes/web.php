@@ -3,6 +3,9 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ArticleController;
+
+Route::resource('articles', ArticleController::class);
 
 Route::get('/login', function () {
     return view('login');
@@ -21,17 +24,6 @@ Route::get('/profile', function () {
         return redirect('/login');
     }
     return view('admin.profile');
-});
-
-Route::get('/articles', function () {
-    return view('articles.index');
-});
-Route::get('/articles/create', function () {
-    return view('articles.create');
-});
-Route::post('/articles/store', function () {
-    // Simulasi penyimpanan artikel
-    return redirect('/articles')->with('success', 'Artikel berhasil disimpan!');
 });
 
 Route::get('/logout', function () {
@@ -53,3 +45,8 @@ Route::get('/dashboard', function () {
 
 Route::get('/user', [UserController::class, 'index'])->name('active.users');
 Route::delete('/user/{id}', [UserController::class, 'destroy'])->name('active.users.delete');
+
+// Admin Routes
+Route::get('/settings', function () {
+    return view('settings');
+})->name('settings');

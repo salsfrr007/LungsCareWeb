@@ -108,7 +108,7 @@
 
             <!-- Footer Menu -->
             <div class="flex flex-col gap-4 mt-10">
-                <a href="#" class="flex items-center gap-2 text-sm hover:text-blue-600">
+                <a href="/settings" class="flex items-center gap-2 text-sm hover:text-blue-600">
                     <span class="material-icons">settings</span> Settings
                 </a>
                 <a href="#" onclick="openLogoutPopup(); return false;" 
@@ -160,8 +160,18 @@
                 <!-- Quick Look -->
                 <div class="bg-white p-6 rounded-lg shadow">
                     <h3 class="text-lg font-semibold mb-4">Quick Look: Lung Health Awareness</h3>
-                    <img src="https://placehold.co/600x300" alt="Lung Health Awareness" class="rounded-lg w-full">
+                    <div class="rounded-lg w-full h-[300px] max-h-[300px] overflow-y-auto p-4 border border-gray-200 text-sm leading-relaxed" style="min-height: 300px;">
+                        <p>
+                            Lung health is crucial for a quality life, yet often overlooked. Many respiratory diseases like asthma, bronchitis, or COPD stem from lifestyle habits such as smoking, exposure to pollutants, and poor air quality. This article highlights the importance of regular check-ups, avoiding smoking, and maintaining clean indoor air. Exercise also plays a vital role, as it increases lung capacity and improves breathing efficiency. Awareness campaigns during Lung Health Month aim to educate people about early symptoms such as persistent coughing, shortness of breath, or chest discomfort. Early diagnosis and treatment can make a significant difference. Stay informed, stay healthy.
+                        </p>
+                    </div>
+                    <div class="mt-4 text-right">
+                        <a href="/articles" class="text-blue-600 hover:underline font-medium">See more →</a>
+                    </div>
                 </div>
+
+</div>
+
             </div>
         </main>
     </div>
