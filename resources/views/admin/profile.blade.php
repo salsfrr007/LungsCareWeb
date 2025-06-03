@@ -52,9 +52,28 @@
       <div class="bg-white rounded-lg shadow p-6 max-w-3xl">
         <!-- Section Title -->
         <h2 class="text-xl font-semibold mb-1">Personal Information</h2>
-        <p class="text-gray-500 mb-6">Update your name, email, and avatar.</p>
+        <p class="text-gray-500 mb-6">Update your name, username, and avatar.</p>
 
-        <form class="space-y-6">
+        @if(session('success'))
+            <div class="mb-4 p-4 bg-green-500 text-white rounded-md">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        @if($errors->any())
+            <div class="mb-4 p-4 bg-red-500 text-white rounded-md">
+                <ul class="list-disc list-inside">
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        <form action="{{ route('profile.update') }}" method="POST" class="space-y-6">
+          @csrf
+          @method('PUT')
+          
           <!-- Avatar -->
           <div class="flex items-center gap-6">
             <div class="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center text-gray-500 text-sm">
@@ -70,8 +89,14 @@
 
           <!-- Full Name -->
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-            <input type="text" value="Admin User" disabled class="w-full bg-gray-100 border border-gray-300 text-gray-600 px-4 py-2 rounded-md" />
+            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+            <input type="text" id="name" name="name" value="{{ old('name', Auth::user()->name) }}" required class="w-full border border-gray-300 text-gray-700 px-4 py-2 rounded-md focus:ring-indigo-500 focus:border-indigo-500" />
+          </div>
+
+          <!-- Username -->
+          <div>
+            <label for="username" class="block text-sm font-medium text-gray-700 mb-1">Username</label>
+            <input type="text" id="username" name="username" value="{{ old('username', Auth::user()->username) }}" required class="w-full border border-gray-300 text-gray-700 px-4 py-2 rounded-md focus:ring-indigo-500 focus:border-indigo-500" />
           </div>
 
           <!-- Email -->

@@ -99,27 +99,27 @@
           <th class="p-3 text-center">Title</th>
           <th class="p-3 text-center">Author</th>
           <th class="p-3 text-center">Link URL</th>
-          <th class="p-3 text-center">Date</th>
+          <th class="p-3 text-center">Created At</th>
           <th class="p-3 text-center">Actions</th>
         </tr>
       </thead>
       <tbody id="articlesBody">
         @forelse($articles as $article)
           <tr class="border-b text-center">
-            <td class="p-3">{{ $article['id'] }}</td>
-            <td class="p-3">{{ $article['judul'] }}</td>
-            <td class="p-3">{{ $article['author'] }}</td>
+            <td class="p-3">{{ $article->id }}</td>
+            <td class="p-3">{{ $article->judul }}</td>
+            <td class="p-3">{{ $article->author }}</td>
             <td class="p-3">
-              <a href="{{ $article['link'] }}" class="text-blue-600 underline" target="_blank">
-                {{ $article['link'] }}
+              <a href="{{ $article->link }}" class="text-blue-600 underline" target="_blank">
+                {{ $article->link }}
               </a>
             </td>
             <td class="p-3">
-              {{ isset($article['tanggal']) ? \Carbon\Carbon::parse($article['tanggal'])->format('d M Y') : '-' }}
+              {{ $article->created_at ? $article->created_at->format('d M Y') : '-' }}
             </td>
             <td class="p-3">
-              <a href="{{ route('articles.edit', $article['id']) }}" class="text-yellow-600 hover:underline mr-2">Edit</a>
-              <button onclick="showDeletePopup({{ $article['id'] }})" class="text-red-600 hover:underline">Delete</button>
+              <a href="{{ route('articles.edit', $article->id) }}" class="text-yellow-600 hover:underline mr-2">Edit</a>
+              <button onclick="showDeletePopup({{ $article->id }})" class="text-red-600 hover:underline">Delete</button>
             </td>
           </tr>
         @empty
@@ -156,13 +156,17 @@
     const rows = document.querySelectorAll('#articlesBody tr');
 
     rows.forEach(row => {
-      const title = row.cells[1]?.innerText.toLowerCase() || '';
-      const author = row.cells[2]?.innerText.toLowerCase() || '';
-      const tanggal = row.cells[5]?.innerText.toLowerCase() || '';
-      if (title.includes(query) || author.includes(query) || tanggal.includes(query)) {
-        row.style.display = '';
-      } else {
-        row.style.display = 'none';
+      // Ensure row.cells exists and has enough elements
+      if (row.cells && row.cells.length > 4) {
+        const title = row.cells[1]?.innerText.toLowerCase() || '';
+        const author = row.cells[2]?.innerText.toLowerCase() || '';
+        const createdAtDate = row.cells[4]?.innerText.toLowerCase() || ''; // Correct index for "Created At"
+        
+        if (title.includes(query) || author.includes(query) || createdAtDate.includes(query)) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
       }
     });
   });

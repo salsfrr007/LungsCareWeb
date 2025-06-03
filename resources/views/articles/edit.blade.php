@@ -84,10 +84,10 @@
         <input type="text" id="author" name="author" value="{{ old('author', $article['author']) }}" class="w-full border border-gray-300 rounded px-3 py-2" required />
       </div>
 
-      <div class="mb-4">
+      {{-- <div class="mb-4">
         <label for="tanggal" class="block font-semibold mb-1">Tanggal</label>
         <input type="date" id="tanggal" name="tanggal" value="{{ old('tanggal', $article['tanggal']) }}" class="w-full border border-gray-300 rounded px-3 py-2" required />
-      </div>
+      </div> --}}
 
       <div class="mb-6">
         <label for="ringkasan" class="block font-semibold mb-1">Ringkasan</label>

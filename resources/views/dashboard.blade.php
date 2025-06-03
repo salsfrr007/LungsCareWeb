@@ -136,11 +136,11 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <div class="bg-white p-6 rounded-lg shadow">
                     <div class="text-sm text-gray-500 mb-2">Total Articles</div>
-                    <div class="text-2xl font-bold">125</div>
+                    <div class="text-2xl font-bold">{{ $totalArticles }}</div>
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow">
                     <div class="text-sm text-gray-500 mb-2">Active Users</div>
-                    <div class="text-2xl font-bold">78</div>
+                    <div class="text-2xl font-bold">{{ $activeUsers }}</div>
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow">
                     <div class="text-sm text-gray-500 mb-2">Engagement Rate</div>
@@ -159,9 +159,17 @@
                 <div class="bg-white p-6 rounded-lg shadow">
                     <h3 class="text-lg font-semibold mb-4">Recent Activity</h3>
                     <ul class="text-sm space-y-3">
-                        <li><span class="material-icons text-blue-600 align-middle mr-1">monitor_heart</span> New article 'Understanding COPD' published. <br><span class="text-gray-400 text-xs">2 hours ago</span></li>
-                        <li><span class="material-icons text-blue-600 align-middle mr-1">monitor_heart</span> Admin John Doe updated profile. <br><span class="text-gray-400 text-xs">5 hours ago</span></li>
-                        <li><span class="material-icons text-blue-600 align-middle mr-1">monitor_heart</span> User Jane Smith logged in. <br><span class="text-gray-400 text-xs">1 day ago</span></li>
+                        @if($recentArticles->count() > 0)
+                            @foreach($recentArticles as $article)
+                                <li>
+                                    <span class="material-icons text-blue-600 align-middle mr-1">monitor_heart</span>
+                                    New article '{{ $article->judul }}' published.
+                                    <br><span class="text-gray-400 text-xs">{{ $article->display_time }}</span>
+                                </li>
+                            @endforeach
+                        @else
+                            <li>No recent activity in the last 2 days.</li>
+                        @endif
                     </ul>
                 </div>
 

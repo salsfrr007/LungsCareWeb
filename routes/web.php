@@ -5,6 +5,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,9 +36,7 @@ Route::middleware(['auth'])->group(function () {
         return view('dashboard'); // Or a dedicated 'home.blade.php'
     })->name('home');
 
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::resource('articles', ArticleController::class);
 
@@ -47,6 +46,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile', function () {
         return view('admin.profile');
     })->name('profile');
+    Route::put('/profile', [UserController::class, 'updateProfile'])->name('profile.update');
 
     Route::get('/settings', function () {
         return view('settings');
