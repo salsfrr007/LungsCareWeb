@@ -74,19 +74,6 @@
           @csrf
           @method('PUT')
           
-          <!-- Avatar -->
-          <div class="flex items-center gap-6">
-            <div class="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center text-gray-500 text-sm">
-              100 × 100
-            </div>
-            <button type="button" class="flex items-center gap-2 bg-gray-100 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-200">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586M8.586 7l6.586 6.586"></path>
-              </svg>
-              Change Avatar
-            </button>
-          </div>
-
           <!-- Full Name -->
           <div>
             <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>

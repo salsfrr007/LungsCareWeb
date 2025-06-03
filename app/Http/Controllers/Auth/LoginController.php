@@ -33,7 +33,7 @@ class LoginController extends Controller
         {
             $request->session()->regenerate();
 
-            return redirect()->intended(route('home')); // Redirect to intended or home
+            return redirect()->intended(route('dashboard')); // Redirect to intended or home
         }
 
         throw ValidationException::withMessages([

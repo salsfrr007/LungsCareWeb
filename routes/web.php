@@ -32,7 +32,7 @@ Route::post('register', [RegisterController::class, 'register']);
 
 // Protected Routes (Require Authentication)
 Route::middleware(['auth'])->group(function () {
-    Route::get('/home', function () {
+    Route::get('/dashboard', function () {
         return view('dashboard'); // Or a dedicated 'home.blade.php'
     })->name('home');
 

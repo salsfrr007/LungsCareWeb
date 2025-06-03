@@ -37,7 +37,7 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            return redirect('/home');
+            return redirect('/dashboard');
         } else {
             return back()->withErrors(['msg' => 'Email atau password salah!']);
         }

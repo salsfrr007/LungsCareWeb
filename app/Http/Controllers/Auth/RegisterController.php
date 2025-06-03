@@ -42,6 +42,6 @@ class RegisterController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('home'); // Assuming 'home' will be a protected route
+        return redirect()->route('dashboard'); 
     }
 }
