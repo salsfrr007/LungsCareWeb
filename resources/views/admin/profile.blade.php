@@ -28,6 +28,12 @@
           <span class="material-icons">person</span> Profile
         </a>
       </nav>
+      @auth
+        <div class="mt-6 p-2 rounded bg-gray-100 text-sm text-gray-700 text-center">
+            Logged in as: <br>
+            <span class="font-semibold">{{ Auth::user()->name }}</span>
+        </div>
+      @endauth
     </aside>
 
     <!-- Main Content -->

@@ -32,13 +32,22 @@
         </a>
       </nav>
     </div>
-    <div class="flex flex-col gap-4 mt-10">
-      <a href="#" class="flex items-center gap-2 text-sm hover:text-blue-600">
-        <span class="material-icons">settings</span> Settings
-      </a>
-      <a href="/login" class="flex items-center gap-2 text-sm hover:text-red-500">
-        <span class="material-icons">logout</span> Log out
-      </a>
+    <!-- User Info and Footer Menu -->
+    <div>
+        @auth
+            <div class="mb-4 p-2 rounded bg-gray-100 text-sm text-gray-700 text-center">
+                Logged in as: <br>
+                <span class="font-semibold">{{ Auth::user()->name }}</span>
+            </div>
+        @endauth
+        <div class="flex flex-col gap-4 mt-auto">
+            <a href="#" class="flex items-center gap-2 text-sm hover:text-blue-600">
+              <span class="material-icons">settings</span> Settings
+            </a>
+            <a href="/login" class="flex items-center gap-2 text-sm hover:text-red-500">
+              <span class="material-icons">logout</span> Log out
+            </a>
+        </div>
     </div>
   </aside>
 
