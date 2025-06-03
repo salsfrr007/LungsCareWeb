@@ -29,7 +29,6 @@
         </a>
       </nav>
     </aside>
-    
 
     <!-- Main Content -->
     <main class="flex-1 p-10">
